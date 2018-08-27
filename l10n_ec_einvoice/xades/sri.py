@@ -85,8 +85,8 @@ class DocumentXML(object):
                     rs = [m[1][0].tipo, m[1][0].mensaje]
                     rs.append(getattr(m[1][0], 'informacionAdicional', ''))
                     errores.append(' '.join(rs))
-                self.logger.error(errores)
-    return False, ', '.join(errores)
+            self.logger.error(errores)
+            return False, ', '.join(errores)
 
     def request_authorization(self, access_key):
         messages = []
