@@ -77,15 +77,15 @@ class DocumentXML(object):
         result = client.service.validarComprobante(buffer_xml)
         self.logger.info('Estado de respuesta documento: %s' % result.estado)
         errores = []
-        """if result.estado == 'RECIBIDA':
+        if result.estado == 'RECIBIDA':
             return True, errores
-        else:"""
-        for comp in result.comprobantes:
-            for m in comp[1][0].mensajes:
-                rs = [m[1][0].tipo, m[1][0].mensaje]
-                rs.append(getattr(m[1][0], 'informacionAdicional', ''))
-                errores.append(' '.join(rs))
-         self.logger.error(errores)
+        else:
+            for comp in result.comprobantes:
+                for m in comp[1][0].mensajes:
+                    rs = [m[1][0].tipo, m[1][0].mensaje]
+                    rs.append(getattr(m[1][0], 'informacionAdicional', ''))
+                    errores.append(' '.join(rs))
+                self.logger.error(errores)
     return False, ', '.join(errores)
 
     def request_authorization(self, access_key):
